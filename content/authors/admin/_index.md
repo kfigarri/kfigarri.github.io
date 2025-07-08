@@ -89,9 +89,9 @@ work:
     date_end: '2024-08-31'
     summary: |2-
       Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - Constructed an AI-based auto-validation system for teachers' competency assessment files, saving the government a substantial 280,000 GBP in manual validation costs in 1 year running.
+      - Devised a recommendation system algorithm to deliver teachers with meticulously curated high-quality content, yielding a significant 17% increase in the monthly count of teachers accessing educational materials.
+      - Developed "Asisten Guru", a chatbot empowering educators with ideas and suggestions on educational topics, while providing the government with valuable insights from its first controlled AI-educator interaction.
   - position: Data Scientist
     company_name: Bukalapak
     company_url: 'https://about.bukalapak.com/en/about-us/'
@@ -100,9 +100,9 @@ work:
     date_end: 2022-07-19
     summary: |
       Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - Enhanced the retention strategy for the grocery-focused MSME platform (Mitra Bukalapak) by formulating a customer segmentation methodology grounded in Recency, Frequency, and Monetary (RFM) principles, culminating in a noteworthy 10% augmentation of the monthly retention rate.
+      - Designed and analysed sophisticated experiments for marketing and promotional campaign strategies to enhance users' conversion.
+      - Developed machine learning models to predict users' intentions in the search feature of marketplace app.
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
