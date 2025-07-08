@@ -33,7 +33,7 @@ profiles:
   - icon: at-symbol
     url: 'mailto:figarrikeisha@gmail.com'
     label: E-mail Me
-  - icon: medium-icon
+  - icon: custom/medium
     url: https://medium.com/@figarrikeisha
   - icon: brands/github
     url: https://github.com/kfigarri
@@ -50,55 +50,54 @@ interests:
   - AI Safety 
 
 education:
-  - area: PhD Artificial Intelligence
-    institution: Stanford University
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: MSc Artificial Intelligence for Sustainable Development
+    institution: University College London
+    date_start: 2024-09-23
+    date_end: 2025-09-22
     summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.8/4.0
+      Thesis on _Understanding Model Collapse in Large Language Models_, a degradation in factual accuracy that arises under recursive synthetic training. Supervised by [Prof Philip Treleaven](http://www0.cs.ucl.ac.uk/staff/p.treleaven/) and in collaboration with [Holistic AI](https://www.holisticai.com/about).
 
       Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+      - Probabilistic Modelling
+      - Deep Representation and Learning
+      - Information Retrieval and Data Mining
+      - Statistical Natural Language Processing
+    button:
+      text: 'Read Thesis (In Progress)'
+      url: ''
+  - area: BSc Physics
+    institution: Institut Teknologi Bandung
+    date_start: 2014-08-18
+    date_end: 2018-05-03
     summary: |
-      GPA: 3.4/4.0
+      GPA: 3.52/4.0 (Cum Laude)
       
       Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - Information Technology
+      - Computational Physics
+      - Mathematical Physics
+      - Probability & Statistics
+    button:
+      text: 'Read Thesis'
+      url: 'https://drive.google.com/file/d/159zJTUzm-duPOT7jE4K3t4NkCEVu1xM5/view?usp=drive_link'
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
-    company_logo: ''
-    date_start: 2021-01-01
-    date_end: ''
+  - position: Data Scientist
+    company_name: GovTech Edu Indonesia
+    company_url: 'https://www.govtechedu.id/about-us'
+    company_logo: 'https://images.squarespace-cdn.com/content/v1/634516bde48db10ce13c8279/930e9e3a-54a5-41ef-b461-7c2f86ec0ce4/Logo+Aseet_Reverse+Logo.png'
+    date_start: 2022-08-01
+    date_end: '2024-08-31'
     summary: |2-
       Responsibilities include:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - position: Data Scientist
+    company_name: Bukalapak
+    company_url: 'https://about.bukalapak.com/en/about-us/'
+    company_logo: 'https://companieslogo.com/img/orig/BUKA.JK-25d1a629.png?t=1720244491'
+    date_start: 2018-08-06
+    date_end: 2022-07-19
     summary: |
       Responsibilities include:
       - Migrated infrastructure to a new data center
@@ -142,10 +141,8 @@ skills:
 languages:
   - name: English
     percent: 100
-  - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
+  - name: Indonesia
+    percent: 100
 
 # Awards.
 #   Add/remove as many awards below as you like.
@@ -181,4 +178,4 @@ awards:
 
 ## About Me
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+A results-driven data scientist with 6 years of experience currently pursuing an MSc in Artificial Intelligence for Sustainable Development at University College London. I specialise in developing impactful AI solutions for sustainable development, particularly in education. With a keen interest in enhancing large language models and advancing AI fairness, I aim to bridge technology and societal impact to drive meaningful change.
