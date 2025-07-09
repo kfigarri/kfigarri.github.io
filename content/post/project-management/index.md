@@ -7,8 +7,13 @@ authors:
 tags:
   - Hugo Blox
   - Markdown
+featured: true
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
+  focal_point: ''
+  preview_only: false
+projects:
+  - pandas
 ---
 
 Easily manage your projects - create ideation mind maps, Gantt charts, todo lists, and more!
