@@ -62,9 +62,9 @@ education:
       - Deep Representation and Learning
       - Information Retrieval and Data Mining
       - Statistical Natural Language Processing
-    button:
-      text: 'Read Thesis (In Progress)'
-      url: ''
+    # button:
+    #   text: ''
+    #   url: ''
   - area: BSc Physics
     institution: Institut Teknologi Bandung
     date_start: 2014-08-18
@@ -121,6 +121,8 @@ skills:
         description: 'Fluent in the language of data—PostgreSQL, BigQuery, and more, mastered for speed and clarity.'
         percent: 100
         icon: circle-stack
+  - name: ''
+    items:
       - name: Large Language Models
         description: 'Taming massive models to reason, recall, and respond like a pro, without hallucinating.'
         percent: 100
@@ -139,8 +141,6 @@ skills:
         icon: hero/lock-closed
   # Hobbies
   - name: Hobbies
-    color: '#eeac02'
-    color_border: '#f0bf23'
     items:
       - name: Football
         description: 'Lifelong passion, been chasing the ball and the thrill of the game since childhood.'
@@ -182,7 +182,6 @@ awards:
       The datathon focuses on developing innovative data-driven applications, tools or statistical models combining geospatial data with other data sources to help advance the implementation of the Sustainable Development Goals. Our team, 4SKA1, received the best team in the Asian region during the 2023 United Nations Datathon.
   - title: Best Visualization Awards in the Youth track
     url: https://unstats.un.org/bigdata/events/2022/hackathon/winners-y.cshtml
-    certificate_url: https://www.datacamp.com
     date: '2022-11-11'
     awarder: UN Datathon
     icon: custom/undatathon
