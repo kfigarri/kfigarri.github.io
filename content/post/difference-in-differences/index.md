@@ -1,5 +1,5 @@
 ---
-title: Causal Inference - Can We Trust What Happens After?
+title: 📈 Causal Inference - Can We Trust What Happens After?
 summary: Learn how to uncover true business impact, even without A/B testing.
 date: 2022-03-25
 authors:
