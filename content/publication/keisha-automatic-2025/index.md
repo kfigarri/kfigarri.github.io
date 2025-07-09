@@ -32,4 +32,14 @@ abstract: 'As a key feature for teachers’ skills development in the Merdeka Me
   up to 80% of document submissions per month with a false positive rate of 2%. This
   system has also resulted in speeding up the validation process time by 76%, henceforth
   accelerating the feedback process for users.'
+featured: true
+tags:
+  - Machine Learning
+  - Classification
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
 ---
+
+You can read the high-level explanation through [this medium](https://medium.com/inadigital-edu/an-automation-tool-for-document-validation-in-the-platform-merdeka-mengajar-35a3e2a66f55).
