@@ -84,7 +84,7 @@ work:
   - position: Data Scientist
     company_name: GovTech Edu Indonesia
     company_url: https://www.govtechedu.id/about-us
-    company_logo: https://images.squarespace-cdn.com/content/v1/634516bde48db10ce13c8279/930e9e3a-54a5-41ef-b461-7c2f86ec0ce4/Logo+Aseet_Reverse+Logo.png
+    company_logo: undatathon
     date_start: 2022-08-01
     date_end: 2024-08-31
     summary: |2-
