@@ -8,7 +8,7 @@ tags:
   - Machine Learning
   - Bukalapak
   - Data Science
-featured: true
+featured: false
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/gray-and-red-shopping-carts-wL7pwimB78Q)'
   focal_point: ''

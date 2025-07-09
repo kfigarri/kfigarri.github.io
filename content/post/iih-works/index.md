@@ -5,10 +5,11 @@ date: 2024-04-18
 authors:
   - admin
 tags:
-  - Machine Learning
-  - Bukalapak
   - Data Science
-featured: true
+  - GovTech Edu
+  - Machine Learning
+  - Generative AI
+featured: false
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/gray-and-red-shopping-carts-wL7pwimB78Q)'
   focal_point: ''
