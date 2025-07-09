@@ -14,8 +14,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'GetResearchDev'
+    description: 'Figarri Keisha is a AI practicioner'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -23,7 +23,7 @@ marketing:
     fathom: ''
     pirsch: ''
   verification:
-    google: ''
+    google: 'google-site-verification=nLsd50s6--M9Vx-vXIu8z_CdD70roIrEZfAqjmOJZSQ'
     baidu: ''
 
 # Site header

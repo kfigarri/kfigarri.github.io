@@ -17,7 +17,7 @@ image:
 
 ## Overview
 
-At the 2022 United Nations Big Data Hackathon, Team 4SKA1—formed by young Indonesian data scientists including myself—took on the global challenge of **Food Insecurity**. Our solution was a scalable **Early Warning System** prototype built using open data and visualized via Google Data Studio. The project won **[Best Visualization Award](https://unstats.un.org/bigdata/events/2022/hackathon/winners-y.cshtml)** in the Youth Track for its clarity, insight, and practical utility.
+At the 2022 United Nations Big Data Hackathon, Team 4SKA1, formed by young Indonesian data scientists including myself, took on the global challenge of **Food Insecurity**. Our solution was a scalable **Early Warning System** prototype built using open data and visualized via Google Data Studio. The project won **[Best Visualization Award](https://unstats.un.org/bigdata/events/2022/hackathon/winners-y.cshtml)** in the Youth Track for its clarity, insight, and practical utility.
 
 ## The Challenge
 
