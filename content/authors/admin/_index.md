@@ -20,7 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: MSc AI for Sustainability Development Student
+role: MSc AI for Sustainable Development Student
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
@@ -95,7 +95,7 @@ work:
   - position: Data Scientist
     company_name: Bukalapak
     company_url: https://about.bukalapak.com/en/about-us/
-    company_logo: custom/lpdp
+    company_logo: lpdp
     date_start: 2018-08-06
     date_end: 2022-07-19
     summary: |
@@ -181,7 +181,6 @@ awards:
     date: '2024-06-11'
     awarder: Indonesia Endowment Fund for Education Agency (LPDP)
     icon: lpdp
-    icon_pack: custom
     summary: |
       Awarded the prestigious LPDP Scholarship for pursuing MSc in Artificial Intelligence for Sustainable Development at University College London
   - title: The Best Team in the Asian Region
@@ -189,7 +188,6 @@ awards:
     date: '2023-11-06'
     awarder: UN Datathon
     icon: undatathon
-    icon_pack: custom
     summary: |
       The datathon focuses on developing innovative data-driven applications, tools or statistical models combining geospatial data with other data sources to help advance the implementation of the Sustainable Development Goals. Our team, 4SKA1, received the best team in the Asian region during the 2023 United Nations Datathon.
   - title: Best Visualization Awards in the Youth track
@@ -197,7 +195,6 @@ awards:
     date: '2022-11-11'
     awarder: UN Datathon
     icon: undatathon
-    icon_pack: custom
     summary: |
       The Hackathon aims at developing ideas and solutions to help achieve the Sustainable Development Goals and assist in resolving Global challenges. Our team, 4SKA1, received the award for having the best Visualization in the Youth track of the 2022 UN Big Data Hackathon.
 ---
