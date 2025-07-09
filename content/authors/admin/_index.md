@@ -89,7 +89,7 @@ work:
     date_end: 2024-08-31
     summary: |2-
       Responsibilities include:
-      - Constructed an AI-based auto-validation system for teachers' competency assessment files, saving the government a substantial 280,000 GBP in manual validation costs in 1 year running.
+      - Constructed an AI-based auto-validation system for teachers' competency assessment files, saving the government a substantial *280,000 GBP* in manual validation costs in 1 year running.
       - Devised a recommendation system algorithm to deliver teachers with meticulously curated high-quality content, yielding a significant 17% increase in the monthly count of teachers accessing educational materials.
       - Developed "Asisten Guru", a chatbot empowering educators with ideas and suggestions on educational topics, while providing the government with valuable insights from its first controlled AI-educator interaction.
   - position: Data Scientist
@@ -135,10 +135,20 @@ skills:
         description: 'Weaving knowledge from documents into LLMs using Retrieval-Augmented Generation.'
         percent: 100
         icon: hero/book-open
-      - name: AI Fairness & Safety
-        description: 'Keeping algorithms honest and aligned—because ethics is not optional.'
-        percent: 100
-        icon: hero/lock-closed
+  - name: ''
+    items:
+    - name: AI Fairness & Safety
+      description: 'Keeping algorithms honest and aligned—because ethics is not optional.'
+      percent: 100
+      icon: hero/lock-closed
+    - name: n8n (Workflow Automation)
+      description: 'Building smart automations that connect tools, trigger actions, and save hours, no code, just flow.'
+      percent: 100
+      icon: hero/arrow-path
+    - name: Streamlit
+      description: 'Rapid prototyping of interactive AI/ML apps, turning notebooks into polished tools in minutes.'
+      percent: 100
+      icon: hero/arrow-right-start-on-rectangle
   # Hobbies
   - name: Hobbies
     items:
@@ -170,14 +180,14 @@ awards:
     url: https://lpdp.kemenkeu.go.id/en/tentang/selayang-pandang/
     date: '2024-06-11'
     awarder: Indonesia Endowment Fund for Education Agency (LPDP)
-    icon: custom/lpdp
+    icon: custom/field
     summary: |
       Awarded the prestigious LPDP Scholarship for pursuing MSc in Artificial Intelligence for Sustainable Development at University College London
   - title: The Best Team in the Asian Region
     url: https://unstats.un.org/bigdata/events/2023/un-datathon/winners.cshtml
     date: '2023-11-06'
     awarder: UN Datathon
-    icon: custom/undatathon
+    icon: instagram
     summary: |
       The datathon focuses on developing innovative data-driven applications, tools or statistical models combining geospatial data with other data sources to help advance the implementation of the Sustainable Development Goals. Our team, 4SKA1, received the best team in the Asian region during the 2023 United Nations Datathon.
   - title: Best Visualization Awards in the Youth track
