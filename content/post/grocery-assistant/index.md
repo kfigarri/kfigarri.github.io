@@ -1,7 +1,7 @@
 ---
 title: 🛒 Building a WhatsApp-Based Grocery Assistant in 3 Days Using n8n
 summary: Maximising n8n workflow automation for prototyping AI solutions
-date: 2025-07-14
+date: 2025-07-10
 authors:
   - admin
 tags:
@@ -86,9 +86,9 @@ For prototypes like this, n8n is perfect. It’s modular, visual, and allows int
 
 Let me walk you through the system design, as shown in the visual below:
 
-<!-- ```html
+```html
 <n8n-demo workflow='{"nodes":[{"name":"Workflow-Created","type":"n8n-nodes-base.webhook","position":[512,369],"parameters":{"path":"webhook","httpMethod":"POST"},"typeVersion":1}],"connections":{}}'></n8n-demo>
-``` -->
+```
 
 
 ### 🟫 Grocery Assistant
