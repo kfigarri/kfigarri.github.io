@@ -45,7 +45,7 @@ A user sends a photo of a grocery receipt via WhatsApp. The assistant:
 - Adds them to the inventory table
 - Responds with a bullet-point confirmation of what was added
 
-<video src="./demo/simulation1.mp4" width="320" height="240" controls></video>
+<video src="./demo/simulation1.mp4" width="1280" height="720" controls></video>
 
 ---
 
@@ -55,7 +55,7 @@ The user asks, _“What should I buy?”_
 
 The assistant checks for items that are low in quantity or expiring soon and replies with a smart grocery list.
 
-<!-- ▶️ _[Video: Generate Grocery List](./demo/demo2-grocery-list.mp4)_ -->
+<video src="./demo/simulation2.mp4" width="1280" height="720" controls></video>
 
 ---
 
@@ -66,7 +66,7 @@ A user sends a random photo (e.g. a street sign or a product box). The assistant
 - Transcribes visible text (if any)
 - Responds politely, explaining that no grocery extraction was possible
 
-<!-- ▶️ _[Video: Handle Non-Receipt Image](./demo/demo3-non-receipt.mp4)_ -->
+<video src="./demo/simulation3.mp4" width="1280" height="720" controls></video>
 
 
 ## 3. Prototyping with n8n
@@ -86,9 +86,7 @@ For prototypes like this, n8n is perfect. It’s modular, visual, and allows int
 
 Let me walk you through the system design, as shown in the visual below:
 
-```html
-<n8n-demo workflow='{"nodes":[{"name":"Workflow-Created","type":"n8n-nodes-base.webhook","position":[512,369],"parameters":{"path":"webhook","httpMethod":"POST"},"typeVersion":1}],"connections":{}}'></n8n-demo>
-```
+![Full Schema](./demo/fullschema.png)
 
 
 ### 🟫 Grocery Assistant
@@ -100,7 +98,7 @@ When a user sends a text message, the **Grocery Assistant** (powered by Gemini 2
 - `Expiring Items` to check for near-expiry products  
 - Replies are sent directly back via WhatsApp.
 
-<!-- ![Grocery Assistant](./images/grocery-assistant.png) -->
+![Grocery Assistant](./demo/groceryassistantschema.png)
 
 ---
 
@@ -112,7 +110,7 @@ If the input is an image (e.g., a photo of a receipt), it’s routed to the **Im
 - If it's a receipt → go to receipt extractor.
 - If not → transcribe and send the text back with a polite fallback.
 
-<!-- ![Image Classifier](./images/image-classifier.png) -->
+![Image Classifier](./demo/imageclassifierschema.png)
 
 ---
 
@@ -124,7 +122,7 @@ If the image is not a receipt, the system still makes use of it. The agent trans
 
 This ensures a graceful fallback and lets users know what's happening.
 
-<!-- ![No Receipt Response](./images/no-receipt-response.png) -->
+![No Receipt Response](./demo/noreceiptschema.png)
 
 ---
 
@@ -143,7 +141,7 @@ When a valid receipt is detected, the image goes through the **Smart Receipt Ext
 
 Despite being entirely no-code, this workflow handles multi-model orchestration, structured output parsing, and real-time database updates.
 
-<!-- ![Smart Receipt Extractor](./images/smart-receipt-extractor.png) -->
+![Smart Receipt Extractor](./demo/receiptextractorschema.png)
 
 ---
 
