@@ -33,6 +33,8 @@ This means no extra app installations, no switching platforms—just smart groce
 
 ---
 
+👉 [View Workflow](./workflow.html)
+
 ### 🧪 Demo
 
 Below are three short demo clips that showcase the main features of the WhatsApp-based Grocery Assistant:
