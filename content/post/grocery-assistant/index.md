@@ -86,7 +86,7 @@ For prototypes like this, n8n is perfect. It’s modular, visual, and allows int
 
 Let me walk you through the system design, as shown in the visual below:
 
-![Full Schema](./demo/fullschema.png)
+[![](./demo/fullschema.png)](./demo/fullschema.png)
 
 
 ### 🟫 Grocery Assistant
