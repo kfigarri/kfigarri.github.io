@@ -19,17 +19,19 @@ image:
 
 As a student living in the UK, balancing study, life, and cooking has been a challenge. Between coursework, lectures, and late-night study sessions, I often forget what’s already sitting in my fridge. This leads to the all-too-familiar outcome: buying groceries I already have, letting things expire, and ultimately wasting food and money.
 
-I wanted a solution that didn’t require me to change my habits or download new apps—just something that worked where I already spend time: **WhatsApp**.
+I wanted a solution that didn’t require me to change my habits or download new apps, just something that worked where I already spend time: **WhatsApp**.
+
+---
 
 ## 2. The Solution
 
-I built a **Grocery Assistant**—an AI-powered tool that helps me:
+I built a **Grocery Assistant**, an AI-powered tool that helps me:
 
 - Extract items from receipt images and store them in a live inventory table
 - Remind me of expiring items and help generate grocery lists
 - Communicate entirely through **WhatsApp**, which I already use daily
 
-This means no extra app installations, no switching platforms—just smart grocery help through a familiar interface.
+This means no extra app installations, no switching platforms, just smart grocery help through a familiar interface.
 
 ---
 
@@ -51,7 +53,7 @@ A user sends a photo of a grocery receipt via WhatsApp. The assistant:
 
 #### 🛒 2. Generate Grocery List from Expiring Items
 
-The user asks, _“What should I buy?”_
+The user asks, _“Give me grocery list based on expiring items”_
 
 The assistant checks for items that are low in quantity or expiring soon and replies with a smart grocery list.
 
@@ -68,6 +70,36 @@ A user sends a random photo (e.g. a street sign or a product box). The assistant
 
 <video src="./demo/simulation3.mp4" width="1280" height="720" controls></video>
 
+---
+
+### 🛢️ Using PostgreSQL with Supabase
+
+To store and manage the grocery data, I used **PostgreSQL hosted on [Supabase](https://supabase.com/)**. The schema consists of two key tables:
+
+#### 1. `product_shelf_life`
+
+This is a reference table containing general knowledge about how long common grocery categories typically last. For example, `Milk` expires in 12 days, `Vegetables` in 3 days, `Snacks` in 180 days, etc.
+
+[![](./demo/productshelflife.png)](./demo/productshelflife.png)
+
+#### 2. `inventory`
+
+This table records items extracted from receipts and keeps track of:
+- Item name
+- Product category
+- Quantity and unit
+- Inferred `expiry_date`
+- Timestamp of purchase
+
+[![](./demo/inventory.png)](./demo/inventory.png)
+
+The `expiry_date` is automatically calculated as:
+
+```sql
+expiry_date = current_date + expected_expired_days
+````
+
+---
 
 ## 3. Prototyping with n8n
 
@@ -76,7 +108,7 @@ To build this fast, I used **n8n**, an open-source workflow automation tool. Why
 - ✅ Low-code with visual logic
 - ✅ Easy integration with WhatsApp (via Business API)
 - ✅ Supports AI models and custom databases
-- ✅ Fast iteration—I built and tested this in under **3 days**
+- ✅ Fast iteration; I built and tested this in under **3 days**
 
 For prototypes like this, n8n is perfect. It’s modular, visual, and allows integrating AI tools with databases, HTTP endpoints, and messaging platforms with minimal boilerplate.
 
@@ -95,7 +127,7 @@ When a user sends a text message, the **Grocery Assistant** (powered by Gemini 2
 
 ✅ Tools used:
 - `Postgres Chat Memory` to access inventory data  
-- `Expiring Items` to check for near-expiry products  
+- `Expiring Items` to check for near-expiry products (connected with PostgreSQL) 
 - Replies are sent directly back via WhatsApp.
 
 [![](./demo/groceryassistantschema.png)](./demo/groceryassistantschema.png)
@@ -147,18 +179,17 @@ Despite being entirely no-code, this workflow handles multi-model orchestration,
 
 ## 5. Conclusion
 
-The Grocery Assistant **works**—and it already saves me time and reduces food waste. It’s still a **prototype**, but the foundation is solid.
+The Grocery Assistant **works** and it already saves me time and reduces food waste. It’s still a **prototype**, but the foundation is solid and extensible.
 
 ### 🛠️ What can be improved?
 
-- Smarter expiry estimation with fine-tuned LLMs  
-- Automatic correction for OCR errors  
-- More personalized grocery list suggestions based on purchase history  
-- Multi-language support for international receipts
+* 🔔 Add a **cron job** to send **WhatsApp reminders** when items are close to expiry
+* 🧠 Improve product mapping by adding more granular shelf-life estimates per **product name** (not just by category)
+* 🤖 Better handling of OCR errors from low-quality receipts
+* 📊 Build a small dashboard to visualize inventory freshness trends
 
 ### 🧠 Final Thoughts on n8n
 
-n8n is fantastic for fast prototyping and workflow iteration. While I haven’t fully explored its **deployment scalability** yet, it gave me an MVP in under 3 days—a feat that would’ve taken much longer with scratch coding. However, for production-scale systems, I'd consider combining n8n with custom backend logic for more control and robustness.
-
+While I haven’t yet explored the feasibility of **public, large-scale deployment** using n8n, I found it incredibly powerful for **prototyping and rapid iteration**. Within just a few days, I was able to build a fully functional AI-powered grocery assistant with real database integration and WhatsApp automation—all without writing a full backend from scratch. For now, I see n8n as a reliable tool for internal workflows, testing ideas quickly, or building MVPs.
 
 ### Did you find this page helpful? Consider sharing it 🙌

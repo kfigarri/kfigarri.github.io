@@ -12,6 +12,7 @@ sections:
     content:
       title: All Projects
       text: I enjoy making things. Here are projects that I have worked on over the years.
+      count: 0
       filters:
         folders:
           - post
