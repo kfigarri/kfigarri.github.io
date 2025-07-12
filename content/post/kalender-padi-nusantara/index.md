@@ -55,7 +55,8 @@ The KaPaN platform is designed to be:
 
 ## 📂 Learn More
 
-- 🔗 [GitHub Repository – KaPaN](https://github.com/bhaskoro-muthohar/KaPaN)  
+- 🔗 [GitHub Repository – KaPaN](https://github.com/bhaskoro-muthohar/KaPaN)
+- 📓 [Storymaps ArcGIS](https://storymaps.arcgis.com/stories/daf4cb8c6791401a92f22e89ceafde40/print)  
 - 📄 [Full Project Report (PDF)](https://drive.google.com/file/d/1FaNbZ8FaAlAk7SlGianEKEBvjb7EYrTl/view?usp=sharing)
 
 ## 🤝 Meet the Team – 4SKA1

@@ -107,12 +107,8 @@ work:
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
 skills:
-  - name: Technical Skills
+  - name: ''
     items:
-      - name: Python
-        description: 'Loyal companion since day one, powering everything from quick scripts to production-grade ML systems.'
-        percent: 100
-        # icon: code-bracket
       - name: Data Science
         description: 'Transforming raw data into real-world impact through statistical insight, machine learning, and storytelling.'
         percent: 100
@@ -121,12 +117,9 @@ skills:
         description: 'Fluent in the language of data, PostgreSQL, BigQuery, and more, mastered for speed and clarity.'
         percent: 100
         icon: circle-stack
-  - name: ''
-    items:
       - name: Large Language Models
         description: 'Taming massive models to reason, recall, and respond like a pro, without hallucinating.'
         percent: 100
-        # icon: hero/chat-bubble-bottom-center-text
       - name: Machine Learning Engineering
         description: 'From experimentation to production, building ML pipelines that scale and survive.'
         percent: 100
@@ -135,22 +128,34 @@ skills:
         description: 'Weaving knowledge from documents into LLMs using Retrieval-Augmented Generation.'
         percent: 100
         icon: hero/book-open
+      - name: AI Fairness & Safety
+        description: 'Keeping algorithms honest and aligned, because ethics is not optional.'
+        percent: 100
+        icon: hero/lock-closed
+      - name: n8n (Workflow Automation)
+        description: 'Building smart automations that connect tools, trigger actions, and save hours, no code, just flow.'
+        percent: 100
+        icon: hero/arrow-path
+      - name: Streamlit
+        description: 'Rapid prototyping of interactive AI/ML apps, turning notebooks into polished tools in minutes.'
+        percent: 100
+        icon: hero/device-phone-mobile
+
+languages:
   - name: ''
     items:
-    - name: AI Fairness & Safety
-      description: 'Keeping algorithms honest and aligned, because ethics is not optional.'
+    - name: Indonesian
+      description: 'Native speaker'
       percent: 100
-      icon: hero/lock-closed
-    - name: n8n (Workflow Automation)
-      description: 'Building smart automations that connect tools, trigger actions, and save hours, no code, just flow.'
+    - name: English
+      description: 'IELTS overall band score - 7.5'
       percent: 100
-      icon: hero/arrow-path
-    - name: Streamlit
-      description: 'Rapid prototyping of interactive AI/ML apps, turning notebooks into polished tools in minutes.'
+    - name: Python
+      description: 'Advanced proficiency'
       percent: 100
-      icon: hero/device-phone-mobile
-  # Hobbies
-  - name: Hobbies
+
+hobbies:
+  - name: ''
     items:
       - name: Football
         description: 'Lifelong passion, been chasing the ball and the thrill of the game since childhood.'
@@ -158,32 +163,12 @@ skills:
         icon: custom/field
       - name: Ball Sports
         description: 'Paddle, bowling, baseball, if it involves a ball, count me in and game on.'
-        percent: 100
+        percent: 75
         icon: custom/sport
       - name: Music
         description: 'From deep focus to creative flow, music fuels my day, whether I’m working or winding down.'
-        percent: 80
+        percent: 65
         icon: hero/musical-note
-  - name: Languages
-    items:
-      - name: Python
-        description: 'Native user'
-        # percent: 100
-        # icon: custom/field
-      - name: Indonesia
-        description: 'Native speaker'
-        # percent: 100
-        # icon: custom/sport
-      - name: English
-        description: 'IELTS overall band score - 7.5'
-        # percent: 80
-        # icon: hero/musical-note
-
-languages:
-  - name: Indonesia
-    description: 'Native speaker'
-  - name: English
-    description: 'IELTS overall band score - 7.5'
 
 # Awards.
 #   Add/remove as many awards below as you like.
