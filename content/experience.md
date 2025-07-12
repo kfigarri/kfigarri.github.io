@@ -24,16 +24,17 @@ sections:
       username: admin
   - block: resume-skills
     content:
-      title: Technical Skills
+      title: Technical Skills & Languages
       username: admin
     design:
+      columns: '1'
       show_skill_percentage: false
-  - block: languages
-    content:
-      title: Languages
-      username: admin
-    design:
-      show_skill_percentage: false
+  # - block: languages
+  #   content:
+  #     title: Languages
+  #     username: admin
+  #   design:
+  #     show_skill_percentage: false
   # - block: resume-hobbies
   #   content:
   #     title: Hobbies

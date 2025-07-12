@@ -107,7 +107,7 @@ work:
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
 skills:
-  - name: ''
+  - name: Technical Skills
     items:
       - name: Data Science
         description: 'Transforming raw data into real-world impact through statistical insight, machine learning, and storytelling.'
@@ -140,9 +140,7 @@ skills:
         description: 'Rapid prototyping of interactive AI/ML apps, turning notebooks into polished tools in minutes.'
         percent: 100
         icon: hero/device-phone-mobile
-
-languages:
-  - name: ''
+  - name: Languages
     items:
     - name: Indonesian
       description: 'Native speaker'
