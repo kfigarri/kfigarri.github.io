@@ -112,7 +112,7 @@ skills:
       - name: Python
         description: 'Loyal companion since day one, powering everything from quick scripts to production-grade ML systems.'
         percent: 100
-        icon: code-bracket
+        # icon: code-bracket
       - name: Data Science
         description: 'Transforming raw data into real-world impact through statistical insight, machine learning, and storytelling.'
         percent: 100
@@ -126,7 +126,7 @@ skills:
       - name: Large Language Models
         description: 'Taming massive models to reason, recall, and respond like a pro, without hallucinating.'
         percent: 100
-        icon: hero/chat-bubble-bottom-center-text
+        # icon: hero/chat-bubble-bottom-center-text
       - name: Machine Learning Engineering
         description: 'From experimentation to production, building ML pipelines that scale and survive.'
         percent: 100
@@ -164,12 +164,26 @@ skills:
         description: 'From deep focus to creative flow, music fuels my day, whether I’m working or winding down.'
         percent: 80
         icon: hero/musical-note
+  - name: Languages
+    items:
+      - name: Python
+        description: 'Native user'
+        # percent: 100
+        # icon: custom/field
+      - name: Indonesia
+        description: 'Native speaker'
+        # percent: 100
+        # icon: custom/sport
+      - name: English
+        description: 'IELTS overall band score - 7.5'
+        # percent: 80
+        # icon: hero/musical-note
 
 languages:
   - name: Indonesia
-    description: Native speaker
+    description: 'Native speaker'
   - name: English
-    description: IELTS overall band score - 7.5
+    description: 'IELTS overall band score - 7.5'
 
 # Awards.
 #   Add/remove as many awards below as you like.
