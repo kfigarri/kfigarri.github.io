@@ -154,21 +154,21 @@ languages:
       description: 'Advanced proficiency'
       percent: 100
 
-hobbies:
-  - name: ''
-    items:
-      - name: Football
-        description: 'Lifelong passion, been chasing the ball and the thrill of the game since childhood.'
-        percent: 100
-        icon: custom/field
-      - name: Ball Sports
-        description: 'Paddle, bowling, baseball, if it involves a ball, count me in and game on.'
-        percent: 75
-        icon: custom/sport
-      - name: Music
-        description: 'From deep focus to creative flow, music fuels my day, whether I’m working or winding down.'
-        percent: 65
-        icon: hero/musical-note
+# hobbies:
+#   - name: ''
+#     items:
+#       - name: Football
+#         description: 'Lifelong passion, been chasing the ball and the thrill of the game since childhood.'
+#         percent: 100
+#         icon: custom/field
+#       - name: Ball Sports
+#         description: 'Paddle, bowling, baseball, if it involves a ball, count me in and game on.'
+#         percent: 75
+#         icon: custom/sport
+#       - name: Music
+#         description: 'From deep focus to creative flow, music fuels my day, whether I’m working or winding down.'
+#         percent: 65
+#         icon: hero/musical-note
 
 # Awards.
 #   Add/remove as many awards below as you like.
