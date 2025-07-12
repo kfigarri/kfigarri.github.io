@@ -190,6 +190,6 @@ The Grocery Assistant **works** and it already saves me time and reduces food wa
 
 ### 🧠 Final Thoughts on n8n
 
-While I haven’t yet explored the feasibility of **public, large-scale deployment** using n8n, I found it incredibly powerful for **prototyping and rapid iteration**. Within just a few days, I was able to build a fully functional AI-powered grocery assistant with real database integration and WhatsApp automation—all without writing a full backend from scratch. For now, I see n8n as a reliable tool for internal workflows, testing ideas quickly, or building MVPs.
+While I haven’t yet explored the feasibility of **public, large-scale deployment** using n8n, I found it incredibly powerful for **prototyping and rapid iteration**. Within just a few days, I was able to build a fully functional AI-powered grocery assistant with real database integration and WhatsApp automation, all without writing a full backend from scratch. For now, I see n8n as a reliable tool for internal workflows, testing ideas quickly, or building MVPs.
 
 ### Did you find this page helpful? Consider sharing it 🙌

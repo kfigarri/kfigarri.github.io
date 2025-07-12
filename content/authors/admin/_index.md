@@ -166,10 +166,10 @@ skills:
         icon: hero/musical-note
 
 languages:
-  - name: English
-    percent: 100
   - name: Indonesia
-    percent: 100
+    description: Native speaker
+  - name: English
+    description: IELTS overall band score - 7.5
 
 # Awards.
 #   Add/remove as many awards below as you like.
