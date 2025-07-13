@@ -1,6 +1,6 @@
 ---
 title: 🛍️ Predicting Users’ Intention When Searching on Online Marketplace Platforms
-summary: Not every shopper searches with the same goal—so why should search engines treat them the same?
+summary: Not every shopper searches with the same goal, so why should search engines treat them the same?
 date: 2020-02-25
 authors:
   - admin

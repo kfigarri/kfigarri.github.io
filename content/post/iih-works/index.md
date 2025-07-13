@@ -1,12 +1,12 @@
 ---
 title: 🎓 The GovTech Edu Data Science Team’s Role in Transforming Education in Indonesia
-summary: Not every shopper searches with the same goal—so why should search engines treat them the same?
+summary: 🚀 Go behind the scenes of how a small data science team is transforming education in Indonesia, one algorithm at a time.
 date: 2024-04-18
 authors:
   - admin
 tags:
+  - GovTech Edu Indonesia 
   - Data Science
-  - GovTech Edu
   - Machine Learning
   - Generative AI
 featured: false
