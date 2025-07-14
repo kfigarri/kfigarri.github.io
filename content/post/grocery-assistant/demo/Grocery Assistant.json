@@ -1,0 +1,1145 @@
+{
+  "name": "Grocery Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.messages[0].text.body }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "08fd0c80-307e-4f45-b1de-35192ee4ec5e"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "202af928-a324-411a-bf15-68a349e7bf9e",
+                    "leftValue": "={{ $json.messages[0].image }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -300,
+        280
+      ],
+      "id": "72d8965a-ef86-4f44-881e-d4aa89dcb44e",
+      "name": "Check Input Type"
+    },
+    {
+      "parameters": {
+        "resource": "media",
+        "operation": "mediaUrlGet",
+        "mediaGetId": "={{ $json.messages[0].image.id }}"
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        320
+      ],
+      "id": "39db4670-8f5a-424d-9493-f2f99ba5fd90",
+      "name": "Get Image URL",
+      "webhookId": "280bd5de-32d7-4d8f-93d2-e91e3b0bc161",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "Lb8MnwcdQ1jAKPEU",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        320
+      ],
+      "id": "6c53648f-c8ce-426b-a0c1-8b90ece2b476",
+      "name": "Download Image",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "HE12K8c5xb7NeXL5",
+          "name": "Header Auth account"
+        },
+        "whatsAppApi": {
+          "id": "Lb8MnwcdQ1jAKPEU",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"item_name\": [\"Fresh Milk 1.65L\", \"Lays Chips Seaweed\"],\n    \"id\":[1, 9],\n    \"product_category\":[\"Milk\", \"Snacks\"],\n\t\"unit\": [\"l\", \"pcs\"],\n    \"quantity\": [1.65, 1],\n    \"expected_expiry_days\":[12, 365]\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1640,
+        1380
+      ],
+      "id": "c6363245-c120-4b05-bec6-c5409db52a63",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        1540
+      ],
+      "id": "5eda54b6-68b1-4948-a230-d43ba89f7d0c",
+      "name": "Gemini Output Parser",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vrdJ5mBwuJCmkfT1",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        1380
+      ],
+      "id": "cbcaf6a9-fdff-485c-bca6-cdffa366951b",
+      "name": "Gemini Extract Text",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vrdJ5mBwuJCmkfT1",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        160,
+        60
+      ],
+      "id": "3ebbef02-77f7-43ba-9677-1bad2cc0c84b",
+      "name": "Process Chat",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vrdJ5mBwuJCmkfT1",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this to map product_name into predefined id, product_category and unit.",
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "product_shelf_life",
+          "mode": "list",
+          "cachedResultName": "product_shelf_life"
+        },
+        "returnAll": true,
+        "options": {
+          "outputColumns": [
+            "category",
+            "unit",
+            "id"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.6,
+      "position": [
+        1500,
+        1380
+      ],
+      "id": "1aff56d6-c227-4dd5-83ec-d579f5d67a06",
+      "name": "Get product categories",
+      "credentials": {
+        "postgres": {
+          "id": "5JkIFxLqfRdSwPEC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst output = items[0]?.json?.output;\n\nconst transformedData = output?.item_name.map((_, i) => {\n  const currentDate = new Date();\n  const expiryDate = new Date();\n  expiryDate.setDate(currentDate.getDate() + output?.expected_expiry_days[i]);\n\n  return {\n    item_name: output?.item_name[i],\n    product_category_id: output?.id[i],\n    product_category: output?.product_category[i],\n    unit: output?.unit[i],\n    quantity: output?.quantity[i],\n    id: Math.floor(Math.random() * 1000000), // generate random id\n    expiry_date: expiryDate.toISOString().split(\"T\")[0], // format as yyyy-mm-dd\n    last_updated: currentDate.toISOString()\n  };\n});\n\nreturn { transformedData };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        1180
+      ],
+      "id": "2d839242-a68d-4dac-8fa2-16aac29fb3bd",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "You are given a receipt transaction image. Please extract all product names along with the unit and quantity. Use the \"get product details\" tool to help you map the product_name into a predefined id, product_category, unit, and expected_expiry_days. The output should be in JSON, with product_name, unit, quantity, id, product_category, and expected_expiry_days. If no suitable product_category is found, you can suggest a new product_category but please utilise existing mapping first. Also, for new product_category, you can continue the id based on the maximum id you can find.",
+        "hasOutputParser": true,
+        "options": {
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1460,
+        1180
+      ],
+      "id": "bf020b0e-c5cc-415f-819d-58ffed9f9b08",
+      "name": "Receipt Extractor"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a helpful and efficient grocery assistant. Your job is to assist users with any grocery-related tasks, such as creating shopping lists, tracking inventory, or checking for expiring items. Always respond in a concise yet complete manner.\n\nIf the user asks for a list (e.g. grocery items to buy), provide it as a neatly formatted checklist. If the user asks a factual question (e.g. “how many eggs do I have left?”), give a clear, brief answer.\n\nBased on the user's message below, either:\n- choose and call the most appropriate tool, or  \n- directly answer the user's question if no tool is needed.\n\n# User message:\n{{ $json.text }}",
+        "options": {
+          "systemMessage": "You are a helpful grocery assistant."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        240,
+        -120
+      ],
+      "id": "0440ff75-fd04-4e8e-b12c-b16078342204",
+      "name": "Grocery Assistant"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c05a7fbf-309a-407e-9fee-7e0b03f4a5c8",
+              "name": "text",
+              "value": "={{ $json.messages[0].text.body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        -120
+      ],
+      "id": "0e0fde42-2e6d-421c-b077-e3f53e723362",
+      "name": "Text Only Prompt"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "transformedData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        1180
+      ],
+      "id": "09824e87-81d5-489e-96b7-62fe48ff963b",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Classify whether the image is a receipt transaction or not. Please give the output as `RECEIPT` or `OTHER IMAGE`",
+        "options": {
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        360,
+        900
+      ],
+      "id": "2604c059-9431-4d6e-b518-2f4c596b9b37",
+      "name": "Receipt Classifier"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "=OTHER IMAGE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    },
+                    "id": "cfeb4f54-83c5-4d50-95f8-5045df9df461"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Other Image"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ba8f4114-7d1c-45e0-a5a7-d1bf62e769db",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "RECEIPT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Receipt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        680,
+        900
+      ],
+      "id": "3df4e96f-f91e-4fd3-856b-22ebc264320d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please first describe the image, then you say something like  \"I can't process the image as this is < image description >, I'll only process a receipt transaction for now.\". Please arrange the output text aligns with user's caption on the image: {{ $('WhatsApp Trigger').item.json.messages[0].image.caption || \"no caption\" }}",
+        "options": {
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        300
+      ],
+      "id": "b17246f4-badd-44ec-86c0-5b66374f1f15",
+      "name": "Transcribe image"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        500
+      ],
+      "id": "9b185c4f-5ac2-479c-863b-3b23eedd29b8",
+      "name": "Gemini Transcribe Image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vrdJ5mBwuJCmkfT1",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": 2
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1200,
+        300
+      ],
+      "id": "b0931704-103b-43c5-9a87-754c4aa6f188",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        300,
+        60
+      ],
+      "id": "d7eadd61-f39e-428b-be90-f059934704f7",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "5JkIFxLqfRdSwPEC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get a list of items and their expiry date",
+        "operation": "executeQuery",
+        "query": "SELECT product_category, MIN(expiry_date) as expected_expired_at\nFROM public.inventory\nWHERE 1 = 1\nGROUP BY 1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.6,
+      "position": [
+        460,
+        80
+      ],
+      "id": "19fcc248-4748-46c0-8823-8121d4058fe8",
+      "name": "Expiring items",
+      "credentials": {
+        "postgres": {
+          "id": "5JkIFxLqfRdSwPEC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "729202070270901",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.messages[0].from }}",
+        "textBody": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        600,
+        -120
+      ],
+      "id": "43e30d66-2460-4a09-927d-900b2bbe2f06",
+      "name": "Grocery Assistant Response",
+      "webhookId": "6111e87b-c8e4-48b0-80bb-56e99af76e73",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "Lb8MnwcdQ1jAKPEU",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "inventory",
+          "mode": "list",
+          "cachedResultName": "inventory"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "item_name": "={{ $json.item_name }}",
+            "product_category_id": "={{ $json.product_category_id }}",
+            "product_category": "={{ $json.product_category }}",
+            "quantity": "={{ $json.quantity }}",
+            "expiry_date": "={{ $json.expiry_date }}",
+            "unit": "={{ $json.unit }}",
+            "last_updated": "={{ $json.last_updated }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "item_name",
+              "displayName": "item_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_category_id",
+              "displayName": "product_category_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_category",
+              "displayName": "product_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "quantity",
+              "displayName": "quantity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "unit",
+              "displayName": "unit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expiry_date",
+              "displayName": "expiry_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_updated",
+              "displayName": "last_updated",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2020,
+        1180
+      ],
+      "id": "c5f6369a-4453-475d-a1a7-9614edae1ab3",
+      "name": "Update Inventory",
+      "credentials": {
+        "postgres": {
+          "id": "5JkIFxLqfRdSwPEC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "729202070270901",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.messages[0].from }}",
+        "textBody": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        300
+      ],
+      "id": "dbbee940-0eff-4911-9206-e2e998d243b4",
+      "name": "No Receipt Response",
+      "webhookId": "6111e87b-c8e4-48b0-80bb-56e99af76e73",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "Lb8MnwcdQ1jAKPEU",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1260,
+        1180
+      ],
+      "id": "5694747b-3927-428a-af76-1a48b63f463b",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "729202070270901",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.messages[0].from }}",
+        "textBody": "=I've updated your inventory!\n\n{{ $json.item_name.map(name => `• ${name}`).join('\\n') }}",
+        "additionalFields": {
+          "previewUrl": false
+        }
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        1180
+      ],
+      "id": "33bb9c1b-451a-4dfc-a946-7a2262de3a40",
+      "name": "Inventory Update Response",
+      "webhookId": "6111e87b-c8e4-48b0-80bb-56e99af76e73",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "Lb8MnwcdQ1jAKPEU",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        280
+      ],
+      "id": "e31c7183-9d25-4b99-b446-917892ca2421",
+      "name": "WhatsApp Trigger",
+      "webhookId": "829dff6b-56ed-45d6-b8bc-de003aa4ca46",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "G04rF8t5mdyXgok8",
+          "name": "WhatsApp OAuth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "item_name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1180
+      ],
+      "id": "a71c7443-bc2d-4400-b12a-eaffbad6cf0d",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "content": "## 🛒 Grocery Assistant\n\nWhen the user sends a text inquiry, the AI agent—powered by **Gemini 2.5 Flash**, will process the message using the appropriate tool. The assistant can access live data such as `expiring items` from the inventory to help the user:\n\n* generate a grocery list,\n* check what items are expiring soon, or\n* handle any other grocery-related tasks.\n\n\nThe assistant responds concisely and contextually through WhatsApp, offering a seamless experience for managing household groceries.",
+        "height": 620,
+        "width": 880
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -400
+      ],
+      "id": "2c03e4bb-36da-46ae-88c2-cee53de3dbdb",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## 🖼️ Image Classifier\n\nWhen the input is an image (binary file), this workflow uses **Gemini 1.5 Flash** to classify whether the image is a **receipt** or **another type of image**. The image is processed by the AI agent, which determines its type based on visual and contextual clues.\n\nOnce classified:\n\n* If the image is a **receipt**, the workflow branches into a receipt extraction flow to identify and log the items.\n* If the image is **not a receipt**, the image is transcribed into text (e.g. signs, documents, packaging), and the result is sent back to the user via WhatsApp.\n",
+        "height": 620,
+        "width": 760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        160,
+        600
+      ],
+      "id": "1ae0275a-a282-44bf-8628-b4ec6019397a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## 🧾 Smart Receipt Extractor\n\nThis workflow processes receipt images and updates the inventory automatically.\n\n1. **Merge**: Combines classification result with the original image.\n2. **Gemini 2.5 Flash**: Extracts raw text from the receipt.\n3. **Get Product Categories**: Retrieves expiry rules from the database.\n4. **Gemini 1.5 Flash**: Parses text into structured grocery items.\n5. **Code**: Cleans and transforms data (adds expiry, chat\\_id, etc.).\n6. **Split Out**: Breaks items into single entries.\n7. **Update Inventory**: Inserts each item into the database.\n8. **Aggregate**: Compiles a summary.\n9. **WhatsApp Response**: Sends the user a checklist of added items.\n",
+        "height": 880,
+        "width": 1320,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        840
+      ],
+      "id": "6b8f78b1-9c2a-4aa2-a2d5-9ba4840a4a67",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## 📷 No Receipt Response\n\nIf the uploaded image is classified as **not a receipt**, this fallback workflow is triggered.\n\nThe system merges the classification result with the original image file to ensure the AI agent receives the full binary input. Using **Gemini 1.5 Flash**, the agent attempts to transcribe any visible text from the image (e.g. a sign, document, or label).\n\nThe output is then sent back to the user via WhatsApp, along with a message explaining that: “This image does not appear to be a receipt, so no item extraction was performed.”",
+        "height": 640,
+        "width": 820,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        20
+      ],
+      "id": "5563d0fe-e000-4909-9c8d-b6c27c5f1659",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        280,
+        1080
+      ],
+      "id": "819d2e11-821d-4a15-ad84-2b463beb3d7e",
+      "name": "Gemini Image Classifier",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vrdJ5mBwuJCmkfT1",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Check Input Type": {
+      "main": [
+        [
+          {
+            "node": "Text Only Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Image URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Image URL": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Receipt Classifier",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Receipt Extractor",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Output Parser": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Extract Text": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Receipt Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Chat": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Grocery Assistant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get product categories": {
+      "ai_tool": [
+        [
+          {
+            "node": "Receipt Extractor",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receipt Extractor": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grocery Assistant": {
+      "main": [
+        [
+          {
+            "node": "Grocery Assistant Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Only Prompt": {
+      "main": [
+        [
+          {
+            "node": "Grocery Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Update Inventory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receipt Classifier": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Gemini Transcribe Image": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Transcribe image",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe image": {
+      "main": [
+        [
+          {
+            "node": "No Receipt Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Transcribe image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Grocery Assistant",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Expiring items": {
+      "ai_tool": [
+        [
+          {
+            "node": "Grocery Assistant",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Inventory": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Receipt Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "Check Input Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Inventory Update Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Image Classifier": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Receipt Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e0e39c94-32da-4cd6-a56c-8deb8af081fe",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "427a84281eb0f08825042cf596320f2f337911cc8a8e457c66532b596825a84c"
+  },
+  "id": "0R2IU9i0j27md4FL",
+  "tags": []
+}

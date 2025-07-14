@@ -1,6 +1,6 @@
 ---
 title: 🎓 The GovTech Edu Data Science Team’s Role in Transforming Education in Indonesia
-summary: 🚀 Go behind the scenes of how a small data science team is transforming education in Indonesia, one algorithm at a time.
+summary: Go behind the scenes of how a small data science team is transforming education in Indonesia, one algorithm at a time.
 date: 2024-04-18
 authors:
   - admin
